@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('CHECKOUT') {
             steps {
-            git 'repo_link'
+            git 'https://github.com/4VV23IS258-prog/c2.git'
             }
         }
         stage('BUILD'){
