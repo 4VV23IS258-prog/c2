@@ -3,7 +3,13 @@ pipeline {
     tools {
         maven 'Maven3'
     }
-
+    post {
+        always {
+            slackSend channel: '#all-vvce',
+                      color: currentBuild.currentResult == 'SUCCESS' ? 'good' : 'danger',
+                      message: "Build ${currentBuild.fullDisplayName} - ${currentBuild.currentResult}: Check it out at ${env.BUILD_URL}"
+        }
+    }
     stages {
         stage('CHECKOUT') {
             steps {
